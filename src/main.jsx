@@ -8,6 +8,7 @@ import './index.css'
 import App from './App.jsx'
 import Home from './pages/Home.jsx'
 import Materi from './pages/Materi.jsx'
+import Quiz from './pages/Quiz.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "", index: true, element: <Home /> },
-      { path: "materi", element: <Materi /> }
+      { path: "materi", element: <Materi /> },
+      { path: "quiz", element: <Quiz /> }
     ]
   },
 ]);

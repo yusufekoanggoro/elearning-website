@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Backdrop, CircularProgress, Typography } from "@mui/material";
+import { Backdrop, CircularProgress, Typography, Box } from "@mui/material";
 
-const SplashScreen = () => {
+const SplashScreen = ({ onFinish }) => {
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
-    // Simulasi loading selama 3 detik sebelum splash screen hilang
     const timer = setTimeout(() => {
       setOpen(false);
+      onFinish(); // Menyelesaikan splash screen
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [onFinish]);
 
   return (
-    <Backdrop open={open} sx={{ color: "#fff", zIndex: 1300, flexDirection: "column" }}>
-      <Typography variant="h4" sx={{ mb: 2 }}>
-        My App
-      </Typography>
-      <CircularProgress color="inherit" />
-    </Backdrop>
+    <Box>
+        <Backdrop 
+            open={open} 
+            sx={{ color: "#fff", zIndex: 1300, flexDirection: "column" }}
+        >
+        <Typography variant="h5">LokaNesia</Typography>
+        <CircularProgress color="inherit" sx={{ mt: 2 }} />
+        </Backdrop>
+
+    </Box>
   );
 };
 

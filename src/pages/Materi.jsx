@@ -30,10 +30,10 @@ export default function Materi() {
 
     return (
         <Box maxWidth="sm" sx={{ display: "flex", flexDirection: "column" }}>
-        <Element name="section1" height={"100vh"}>
-            <MapComponent scrollToSection={scrollToSection} openDrawer={handleDrawerOpen} onEachProvince={onEachProvince} />
-        </Element>
-        <SwipeableTemporaryDrawer open={isDrawerOpen} setOpen={setIsDrawerOpen} selectedProvince={selectedProvince}/>
+            <Element name="section1" height={"100vh"}>
+                <MapComponent scrollToSection={scrollToSection} openDrawer={handleDrawerOpen} onEachProvince={onEachProvince} />
+            </Element>
+            <SwipeableTemporaryDrawer open={isDrawerOpen} setOpen={setIsDrawerOpen} selectedProvince={selectedProvince}/>
         </Box>
     );
 };
