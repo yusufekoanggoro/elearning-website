@@ -52,7 +52,7 @@ export default function SwipeableTemporaryDrawer({ open, setOpen, selectedProvin
       <Divider />
 
       <List>
-        {['Budaya Khas', 'Kuliner Khas', 'Wisata Populer', 'Drafts'].map((text, index) => (
+        {['Rumah Adat', 'Baju Adat', 'Tarian Adat', 'Senjata Tradisional'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>

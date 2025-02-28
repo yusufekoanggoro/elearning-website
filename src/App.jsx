@@ -21,7 +21,8 @@ function App() {
       {
         showSplash 
           ? <SplashScreen onFinish={() => setShowSplash(false)} />
-          : <>
+          : 
+          <>
             <AppBar position="sticky" color="primary">
               <Toolbar>
                 <Typography variant="h6" sx={{ flexGrow: 1 }}>LokaNesia</Typography>

@@ -45,7 +45,7 @@ const Quiz = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 2, pb: 9 }}>
+    <Container maxWidth="xs" sx={{ mt: 2, pb: 9 }}>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
         <Typography variant="h4" gutterBottom align="center">Kuis Keanekaragaman Indonesia</Typography>
 

@@ -29,7 +29,7 @@ export default function Materi() {
     
 
     return (
-        <Box maxWidth="sm" sx={{ display: "flex", flexDirection: "column" }}>
+        <Box maxWidth="xs" sx={{ display: "flex", flexDirection: "column" }}>
             <Element name="section1" height={"100vh"}>
                 <MapComponent scrollToSection={scrollToSection} openDrawer={handleDrawerOpen} onEachProvince={onEachProvince} />
             </Element>

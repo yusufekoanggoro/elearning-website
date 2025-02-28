@@ -40,8 +40,8 @@ export default function FixedBottomNavigation() {
       sx={{
         position: "fixed",
         bottom: 0,
-        left: "50%",
-        transform: "translateX(-50%)",
+        // left: "50%",
+        // transform: "translateX(-50%)",
         width: "100%",
         maxWidth: "444px",
         zIndex: 1000, 
