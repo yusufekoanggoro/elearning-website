@@ -36,7 +36,7 @@ export default function SwipeableTemporaryDrawer({ open, setOpen, selectedProvin
   const handleDetailClick = () => {
     console.log(selectedProvince)
     if (selectedProvince) {
-      navigate(`/materi/detail/${selectedProvince}`);
+      navigate(`/materi/detail/${selectedProvince.code}`);
     }
   };
 
