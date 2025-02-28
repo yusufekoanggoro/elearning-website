@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
@@ -8,13 +9,19 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-// import PlaceIcon from '@mui/icons-material/PlaceIcon';
-import { Typography, Paper, Stack } from "@mui/material";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import Drawer from '@mui/material/Drawer';
+import PlaceIcon from '@mui/icons-material/Place';
+import PeopleIcon from '@mui/icons-material/People';
+import MapIcon from '@mui/icons-material/Map';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export default function SwipeableTemporaryDrawer({ open, setOpen, selectedProvince }) {
+  const navigate = useNavigate();
+
   const toggleDrawer = (open) => (event) => {
     if (
       event &&
@@ -23,51 +30,117 @@ export default function SwipeableTemporaryDrawer({ open, setOpen, selectedProvin
     ) {
       return;
     }
-
     setOpen(open);
   };
 
-  const list = (    
-    <Box
-      sx={{ width: 'auto' }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
+  const handleDetailClick = () => {
+    console.log(selectedProvince)
+    if (selectedProvince) {
+      navigate(`/materi/detail/${selectedProvince}`);
+    }
+  };
 
-      <Stack spacing={2} sx={{ p: 2 }}>
-        <Typography variant="h5" fontWeight="bold" color="primary" textAlign="center">
-          {selectedProvince || "Nama Provinsi"}
-        </Typography>
+  const list = (
+    <Box sx={{ width: 'auto', p: 2 }}>
+      {/* Card Informasi Provinsi */}
+      <Card sx={{ backgroundColor: '#f5f5f5', borderRadius: 3, p: 2, boxShadow: 3 }}>
+        <CardContent>
+          <Typography variant="h5" fontWeight="bold" color="primary" textAlign="center">
+            {selectedProvince?.name || "Nama Provinsi"}
+          </Typography>
 
-        <Stack spacing={1}>
-          <Typography variant="body2"><b>Ibu Kota:</b> {selectedProvince?.capital || "-"}</Typography>
-          <Typography variant="body2"><b>Luas:</b> {selectedProvince?.area || "-"} km²</Typography>
-          <Typography variant="body2"><b>Penduduk:</b> {selectedProvince?.population || "-"} jiwa</Typography>
-        </Stack>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
+            {/* Ibu Kota */}
+            <Grid item xs={12} display="flex" alignItems="center">
+              <PlaceIcon color="action" sx={{ mr: 1 }} />
+              <Typography variant="body1">
+                <b>Ibu Kota:</b> {selectedProvince?.capital || "-"}
+              </Typography>
+            </Grid>
 
-      </Stack>
+            {/* Luas Wilayah */}
+            <Grid item xs={12} display="flex" alignItems="center">
+              <MapIcon color="action" sx={{ mr: 1 }} />
+              <Typography variant="body1">
+                <b>Luas:</b> {selectedProvince?.area || "-"} km²
+              </Typography>
+            </Grid>
 
+            {/* Jumlah Penduduk */}
+            <Grid item xs={12} display="flex" alignItems="center">
+              <PeopleIcon color="action" sx={{ mr: 1 }} />
+              <Typography variant="body1">
+                <b>Penduduk:</b> {selectedProvince?.population || "-"} jiwa
+              </Typography>
+            </Grid>
+          </Grid>
 
-      <Divider />
+          {/* Tombol Lihat Detail */}
+          {/* <Button
+            variant="contained"
+            sx={{
+              mt: 2,
+              background: "linear-gradient(45deg, #007bff, #0056b3)",
+              color: "white",
+              borderRadius: "20px",
+              px: 3,
+              py: 1,
+              "&:hover": {
+                background: "linear-gradient(45deg, #0056b3, #003580)",
+              },
+            }}
+            fullWidth
+            onClick={handleDetailClick}
+            disabled={!selectedProvince} // Disable jika ID tidak ada
+            endIcon={<ArrowForwardIosIcon />}
+          >
+            Lihat Detail
+          </Button> */}
+        </CardContent>
+      </Card>
 
+      {/* Garis Pembatas */}
+      <Divider sx={{ my: 2 }} />
+
+      {/* List Informasi Budaya */}
       <List>
-        {['Rumah Adat', 'Baju Adat', 'Tarian Adat', 'Senjata Tradisional'].map((text, index) => (
+        {["Rumah Adat", "Baju Adat", "Tarian Adat", "Senjata Tradisional"].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={{ borderRadius: 2, "&:hover": { backgroundColor: "#f0f0f0" } }}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <MapIcon color="primary" /> : <PeopleIcon color="secondary" />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
+
+      <Box sx={{ mt: 3, textAlign: "center" }}>
+        <Button
+          variant="contained"
+          sx={{
+            background: "linear-gradient(45deg, #007bff, #0056b3)",
+            color: "white",
+            borderRadius: "20px",
+            px: 3,
+            py: 1,
+            "&:hover": {
+              background: "linear-gradient(45deg, #0056b3, #003580)",
+            },
+          }}
+          onClick={handleDetailClick}
+          disabled={!selectedProvince}
+          endIcon={<ArrowForwardIosIcon />}
+        >
+          Lihat Detail
+        </Button>
+      </Box>
     </Box>
   );
 
   const iOS =
-  typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
+    typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   return (
     <Drawer
@@ -75,9 +148,10 @@ export default function SwipeableTemporaryDrawer({ open, setOpen, selectedProvin
       open={open}
       onClose={toggleDrawer(false)}
       onOpen={toggleDrawer(true)}
-      disableBackdropTransition={!iOS} disableDiscovery={iOS}
+      disableBackdropTransition={!iOS}
+      disableDiscovery={iOS}
     >
-    {list}
+      {list}
     </Drawer>
   );
 }

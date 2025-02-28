@@ -17,8 +17,21 @@ function App() {
       maxWidth="xs" 
       sx={{ width: "100%", margin: "0 auto"}}
     >
+                <>
+            <AppBar position="sticky" color="primary">
+              <Toolbar>
+                <Typography variant="h6" sx={{ flexGrow: 1 }}>LokaNesia</Typography>
+              </Toolbar>
+            </AppBar>
 
-      {
+            <Box>
+              <Outlet />
+            </Box>
+
+            <FixedBottomNavigation/>          
+          </>
+
+      {/* {
         showSplash 
           ? <SplashScreen onFinish={() => setShowSplash(false)} />
           : 
@@ -36,7 +49,7 @@ function App() {
             <FixedBottomNavigation/>          
           </>
 
-      }
+      } */}
     </Container>
   )
 }

@@ -12,20 +12,20 @@ export default function FixedBottomNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Mapping URL path ke indeks BottomNavigation
-  const pathToIndex = {
-    "/": 0,
-    "/materi": 1,
-    "/quiz": 2,
-    "/profile": 3
+  const getNavigationIndex = (pathname) => {
+    if (pathname === "/") return 0;
+    if (pathname.startsWith("/materi")) return 1; // Pastikan menu Jelajah tetap aktif di halaman detail
+    if (pathname.startsWith("/quiz")) return 2;
+    if (pathname.startsWith("/profile")) return 3;
+    return 0;
   };
 
   // Gunakan state untuk nilai BottomNavigation
-  const [value, setValue] = React.useState(pathToIndex[location.pathname] || 0);
-
+  const [value, setValue] = React.useState(getNavigationIndex(location.pathname));
+  
   // Update value ketika URL berubah
   React.useEffect(() => {
-    setValue(pathToIndex[location.pathname] || 0);
+    setValue(getNavigationIndex(location.pathname));
   }, [location.pathname]);
 
   const handleChange = (_, newValue) => {

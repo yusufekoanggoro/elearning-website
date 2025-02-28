@@ -21,7 +21,7 @@ export default function Materi() {
 
     const onEachProvince = (feature, layer) => {
         layer.on("click", () => {
-            setSelectedProvince(feature.properties.PROVINSI); // Set provinsi ke modal
+            setSelectedProvince(feature.properties.KODE_PROV); // Set provinsi ke modal
             handleDrawerOpen()
         });
         layer.bindTooltip(feature.properties.PROVINSI, { permanent: false, interactive: true });
