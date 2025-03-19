@@ -11,10 +11,11 @@ const provincesData = {
     population: 48770000,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Coat_of_arms_of_West_Java.svg/129px-Coat_of_arms_of_West_Java.svg.png",
     cultures: [
-      { name: "Rumah Adat: Rumah Kasepuhan", image: "https://cdnwpedutorenews.gramedia.net/wp-content/uploads/2021/11/23190439/unnamed-25.png" },
-      { name: "Baju Adat: Pangsi", image: "https://source.unsplash.com/300x200/?traditional-clothes" },
-      { name: "Tarian: Jaipong", image: "https://source.unsplash.com/300x200/?traditional-dance" },
-      { name: "Senjata: Kujang", image: "https://source.unsplash.com/300x200/?traditional-weapon" }
+      { name: "Rumah Adat: Rumah Kasepuhan Cirebon", image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01jmvpzbjrxa4b7rgt4pf6esj3.jpg" },
+      { name: "Baju Adat: Pangsi", image: "https://www.dailysports.id/upload/large/974ae4a50ec53ee0ca78b0be4190a8e4.jpeg" },
+      { name: "Tarian: Jaipong", image: "https://blog-static.mamikos.com/wp-content/uploads/2023/12/Nama-Tarian-Tradisional-Jawa-Barat-beserta-Gambar-1.jpg.webp" },
+      { name: "Senjata: Kujang", image: "https://blog-static.mamikos.com/wp-content/uploads/2023/01/1.-Kujang.jpg.webp" },
+      { name: "Makanan Khas: Karedok", image: "https://cnc-magazine.oramiland.com/parenting/images/Karedok.width-800.format-webp.webp" },
     ]
   },
   "jawa-tengah": {
