@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Card, CardContent, Typography, Button, Radio, RadioGroup, FormControlLabel, Modal, Box, LinearProgress } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -22,6 +22,10 @@ const Quiz = () => {
   const totalQuestions = questions.length;
   const answeredQuestions = Object.keys(answers).length;
   const progress = (answeredQuestions / totalQuestions) * 100;
+
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleChange = (questionIndex, answer) => {
     setAnswers({ ...answers, [questionIndex]: answer });

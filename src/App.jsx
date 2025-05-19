@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Container, Box, AppBar, Toolbar, Typography } from "@mui/material";
 import FixedBottomNavigation from "./components/FixedBottomNavigation";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import backgroundMusic from "./assets/background-music.mp3";
 
 import './App.css';
 
 function App() {
   const location = useLocation();
   const isIndex = location.pathname === '/';
+
+  const [playMusic, setPlayMusic] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (playMusic && audioRef.current) {
+      audioRef.current.play().catch(err => {
+        console.log("Audio play error:", err);
+      });
+    } else if (audioRef.current) {
+      audioRef.current.pause();
+    }
+  }, [playMusic]);
 
   return (
     <Container
@@ -24,6 +38,8 @@ function App() {
       }}
     >
       <>
+        {playMusic && <audio src={backgroundMusic} ref={audioRef} loop />}
+
         {
           isIndex 
             ? null
@@ -35,7 +51,7 @@ function App() {
         }
 
         <Box>
-          <Outlet />
+          <Outlet context={{ setPlayMusic }} />
         </Box>
 
         {
