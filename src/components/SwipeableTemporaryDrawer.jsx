@@ -1,7 +1,5 @@
-import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -18,6 +16,24 @@ import PlaceIcon from '@mui/icons-material/Place';
 import PeopleIcon from '@mui/icons-material/People';
 import MapIcon from '@mui/icons-material/Map';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import LanguageIcon from '@mui/icons-material/Language';
+import HomeIcon from '@mui/icons-material/Home';
+import CheckroomIcon from '@mui/icons-material/Checkroom';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import SportsMartialArtsIcon from '@mui/icons-material/SportsMartialArts';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import AudiotrackIcon from '@mui/icons-material/Audiotrack';
+import TheatersIcon from '@mui/icons-material/Theaters';
+
+const items = [
+  { text: 'Rumah Adat', icon: <HomeIcon color="primary" /> },
+  { text: 'Baju Adat', icon: <CheckroomIcon color="secondary" /> },
+  { text: 'Tarian Adat', icon: <EmojiPeopleIcon color="primary" /> },
+  { text: 'Senjata Tradisional', icon: <SportsMartialArtsIcon color="secondary" /> },
+  { text: 'Alat Musik', icon: <AudiotrackIcon color="secondary" /> },
+  { text: 'Lagu Daerah', icon: <MusicNoteIcon color="primary" /> },
+  { text: 'Seni Pertunjukan', icon: <TheatersIcon color="primary" /> },
+];
 
 export default function SwipeableTemporaryDrawer({ open, setOpen, selectedProvince }) {
   const navigate = useNavigate();
@@ -49,31 +65,39 @@ export default function SwipeableTemporaryDrawer({ open, setOpen, selectedProvin
             {selectedProvince?.name || "Nama Provinsi"}
           </Typography>
 
-          <Grid container spacing={2} sx={{ mt: 1 }}>
+          {/* <Grid container spacing={2} sx={{ mt: 1 }}> */}
             {/* Ibu Kota */}
-            <Grid item xs={12} display="flex" alignItems="center">
+            {/* <Grid item xs={12} display="flex" alignItems="center">
               <PlaceIcon color="action" sx={{ mr: 1 }} />
               <Typography variant="body1">
-                <b>Ibu Kota:</b> {selectedProvince?.capital || "-"}
+                <b>Ibu Kota:</b> {selectedProvince?.PROVINSI || "-"}
               </Typography>
-            </Grid>
+            </Grid> */}
 
             {/* Luas Wilayah */}
-            <Grid item xs={12} display="flex" alignItems="center">
+            {/* <Grid item xs={12} display="flex" alignItems="center">
               <MapIcon color="action" sx={{ mr: 1 }} />
               <Typography variant="body1">
                 <b>Luas:</b> {selectedProvince?.area || "-"} km²
               </Typography>
-            </Grid>
+            </Grid> */}
 
             {/* Jumlah Penduduk */}
-            <Grid item xs={12} display="flex" alignItems="center">
+            {/* <Grid item xs={12} display="flex" alignItems="center">
               <PeopleIcon color="action" sx={{ mr: 1 }} />
               <Typography variant="body1">
                 <b>Penduduk:</b> {selectedProvince?.population || "-"} jiwa
               </Typography>
-            </Grid>
-          </Grid>
+            </Grid> */}
+
+            {/* Bahasa Daerah */}
+            {/* <Grid item xs={12} display="flex" alignItems="center">
+              <LanguageIcon  color="action" sx={{ mr: 1 }} />
+              <Typography variant="body1">
+                <b>Bahasa Daerah:</b> {selectedProvince?.languange || "-"}
+              </Typography>
+            </Grid> */}
+          {/* </Grid> */}
 
           {/* Tombol Lihat Detail */}
           {/* <Button
@@ -104,11 +128,11 @@ export default function SwipeableTemporaryDrawer({ open, setOpen, selectedProvin
 
       {/* List Informasi Budaya */}
       <List>
-        {["Rumah Adat", "Baju Adat", "Tarian Adat", "Senjata Tradisional"].map((text, index) => (
+        {items.map(({ text, icon }) => (
           <ListItem key={text} disablePadding>
             <ListItemButton sx={{ borderRadius: 2, "&:hover": { backgroundColor: "#f0f0f0" } }}>
               <ListItemIcon>
-                {index % 2 === 0 ? <MapIcon color="primary" /> : <PeopleIcon color="secondary" />}
+                {icon}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>

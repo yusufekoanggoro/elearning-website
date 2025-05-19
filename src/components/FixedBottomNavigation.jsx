@@ -13,7 +13,7 @@ export default function FixedBottomNavigation() {
   const location = useLocation();
 
   const getNavigationIndex = (pathname) => {
-    if (pathname === "/") return 0;
+    if (pathname === "/home") return 0;
     if (pathname.startsWith("/materi")) return 1; // Pastikan menu Jelajah tetap aktif di halaman detail
     if (pathname.startsWith("/quiz")) return 2;
     if (pathname.startsWith("/profile")) return 3;
@@ -30,7 +30,7 @@ export default function FixedBottomNavigation() {
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
-    const paths = ["/", "/materi", "/quiz", "/profile"];
+    const paths = ["/home", "/materi", "/quiz", "/profile"];
     navigate(paths[newValue]);
   };
 

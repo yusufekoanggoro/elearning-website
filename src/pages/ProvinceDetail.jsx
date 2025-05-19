@@ -1,7 +1,10 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, Card, CardMedia, CardContent, Typography, Button, Stack, Grid, Paper } from '@mui/material';
+import {
+  Box, Typography, Card, CardMedia, CardContent, Grid, Button, Chip, Divider, Link, Tooltip
+} from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 const provincesData = {
   "32": {
@@ -11,23 +14,110 @@ const provincesData = {
     population: 48770000,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Coat_of_arms_of_West_Java.svg/129px-Coat_of_arms_of_West_Java.svg.png",
     cultures: [
-      { name: "Rumah Adat: Rumah Kasepuhan", image: "https://cdnwpedutorenews.gramedia.net/wp-content/uploads/2021/11/23190439/unnamed-25.png" },
-      { name: "Baju Adat: Pangsi", image: "https://source.unsplash.com/300x200/?traditional-clothes" },
-      { name: "Tarian: Jaipong", image: "https://source.unsplash.com/300x200/?traditional-dance" },
-      { name: "Senjata: Kujang", image: "https://source.unsplash.com/300x200/?traditional-weapon" }
-    ]
-  },
-  "jawa-tengah": {
-    name: "Jawa Tengah",
-    capital: "Semarang",
-    area: 32800,
-    population: 36740000,
-    image: "https://source.unsplash.com/600x400/?semarang",
-    cultures: [
-      { name: "Rumah Adat: Joglo", image: "https://source.unsplash.com/300x200/?traditional-house" },
-      { name: "Baju Adat: Kebaya", image: "https://source.unsplash.com/300x200/?traditional-clothes" },
-      { name: "Tarian: Gambyong", image: "https://source.unsplash.com/300x200/?traditional-dance" },
-      { name: "Senjata: Keris", image: "https://source.unsplash.com/300x200/?traditional-weapon" }
+      {
+        name: "Rumah Adat",
+        data: [
+          {
+            name: "Rumah Adat Togok Anjing",
+            image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01jmvpzbjrxa4b7rgt4pf6esj3.jpg"
+          },
+          {
+            name: "Imah Julang Ngapak",
+            image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01jmvpzbjrxa4b7rgt4pf6esj3.jpg"
+          },
+          {
+            name: "Imah Jolopong",
+            image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01jmvpzbjrxa4b7rgt4pf6esj3.jpg"
+          },
+          {
+            name: "Imah Badak Heuay",
+            image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01jmvpzbjrxa4b7rgt4pf6esj3.jpg"
+          },
+          {
+            name: "Imah Perahu Kumureb",
+            image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01jmvpzbjrxa4b7rgt4pf6esj3.jpg"
+          },
+          {
+            name: "Rumah Adat Kasepuhan Cirebon",
+            image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01jmvpzbjrxa4b7rgt4pf6esj3.jpg"
+          },
+          {
+            name: "Rumah Adat Buka Palayu",
+            image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01jmvpzbjrxa4b7rgt4pf6esj3.jpg"
+          }
+        ]
+      },
+      {
+        name: "Baju Adat",
+        data: [
+          {
+            name: "Pangsi",
+            image: "https://www.dailysports.id/upload/large/974ae4a50ec53ee0ca78b0be4190a8e4.jpeg"
+          }
+        ]
+      },
+      {
+        name: "Tarian",
+        data: [
+          {
+            name: "Jaipong",
+            image: "https://blog-static.mamikos.com/wp-content/uploads/2023/12/Nama-Tarian-Tradisional-Jawa-Barat-beserta-Gambar-1.jpg.webp"
+          }
+        ]
+      },
+      {
+        name: "Senjata",
+        data: [
+          {
+            name: "Kujang",
+            image: "https://blog-static.mamikos.com/wp-content/uploads/2023/01/1.-Kujang.jpg.webp"
+          }
+        ]
+      },
+      {
+        name: "Makanan Khas",
+        data: [
+          {
+            name: "Karedok",
+            image: "https://cnc-magazine.oramiland.com/parenting/images/Karedok.width-800.format-webp.webp"
+          }
+        ]
+      },
+      {
+        name: "Alat Musik",
+        data: [
+          {
+            name: "Angklung",
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Indonesianbamboomusicangklung.jpg/281px-Indonesianbamboomusicangklung.jpg"
+          },
+          {
+            name: "Calung",
+            image: "https://upload.wikimedia.org/wikipedia/id/thumb/5/5d/Calung-sunda.jpg/500px-Calung-sunda.jpg"
+          }
+        ]
+      },
+      {
+        name: "Lagu Daerah",
+        data: [
+          {
+            name: "Manuk Dadali",
+            ytUrl: "https://www.youtube.com/watch?v=zASs9t6D6EU"
+          },
+          {
+            name: "Bubuy Bulan",
+            ytUrl: "https://www.youtube.com/watch?v=Vz2w93wUgtQ"
+          }
+        ]
+      },
+      {
+        name: "Seni Pertunjukan",
+        data: [
+          {
+            name: "Angklung Bungko",
+            ytUrl: "https://www.youtube.com/watch?v=yz5p3f2jKLU"
+          }
+        ]
+      }
     ]
   }
 };
@@ -41,51 +131,96 @@ const ProvinceDetail = () => {
     return (
       <Box sx={{ textAlign: 'center', mt: 5 }}>
         <Typography variant="h5" color="error">Provinsi tidak ditemukan!</Typography>
-        <Button variant="contained" onClick={() => navigate(-1)}>Kembali</Button>
+        <Button variant="contained" onClick={() => navigate(-1)} sx={{ mt: 2 }}>Kembali</Button>
       </Box>
     );
   }
 
-  return (
-    <Box sx={{ maxWidth: 900, mx: 'auto', p: 3, pb: 9, bgcolor: '#f7f7f7', borderRadius: 3}}>
-      <Button startIcon={<ArrowBackIcon />} onClick={() => navigate(-1)} sx={{ mb: 2 }}>
-        Kembali
-      </Button>
+  const { name, capital, area, population, image, cultures } = province;
 
-      <Card sx={{ borderRadius: 3, boxShadow: 4, overflow: 'hidden' }}>
-        <CardMedia component="img" height="250" image={province.image} alt={province.name} sx={{ objectFit: 'cover' }} />
+  return (
+    <Box sx={{ maxWidth: 1000, mx: 'auto', px: 2, py: 4 }}>
+      {/* <Button
+        variant="outlined"
+        startIcon={<ArrowBackIcon />}
+        onClick={() => navigate(-1)}
+        sx={{ mb: 3 }}
+      >
+        Kembali
+      </Button> */}
+
+      <Card sx={{ mb: 3, p: 2, boxShadow: 3 }}>
+        <CardMedia
+          component="img"
+          height="200"
+          image={image}
+          alt={name}
+          sx={{ objectFit: 'contain', bgcolor: '#fafafa' }}
+        />
       </Card>
 
-      <Paper elevation={3} sx={{ mt: -3, p: 3, bgcolor: 'white', borderRadius: 3 }}>
-        <Typography variant="h4" fontWeight="bold" gutterBottom>{province.name}</Typography>
-        <Stack spacing={1}>
-          <Typography variant="body1"><b>Ibu Kota:</b> {province.capital}</Typography>
-          <Typography variant="body1"><b>Luas:</b> {province.area.toLocaleString()} km²</Typography>
-          <Typography variant="body1"><b>Penduduk:</b> {province.population.toLocaleString()} jiwa</Typography>
-        </Stack>
-      </Paper>
+      <Typography variant="h4" fontWeight="bold" gutterBottom>{name}</Typography>
+      <Box mb={3}>
+        <Typography><b>Ibu Kota:</b> {capital}</Typography>
+        <Typography><b>Luas:</b> {area.toLocaleString()} km²</Typography>
+        <Typography><b>Penduduk:</b> {population.toLocaleString()} jiwa</Typography>
+      </Box>
 
-      <Typography variant="h6" fontWeight="bold" color="primary" sx={{ mt: 4 }}>
-        Budaya Daerah:
-      </Typography>
+      <Divider sx={{ my: 4 }} />
+      <Typography variant="h5" fontWeight="bold" gutterBottom>Budaya Daerah</Typography>
 
-      <Grid container spacing={3} sx={{ mt: 1 }}>
-        {province.cultures.map((culture, index) => (
-          <Grid item xs={12} key={index}>
-            <Card sx={{ boxShadow: 3, borderRadius: 3, transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
-              <CardMedia
-                component="img"
-                height="180"
-                image={culture.image}
-                alt={culture.name}
-              />
-              <CardContent sx={{ textAlign: "center", p: 2 }}>
-                <Typography variant="h6" fontWeight="bold">{culture.name}</Typography>
-              </CardContent>
-            </Card>
+      {cultures.map((culture, i) => (
+        <Box key={i} sx={{ mb: 4 }}>
+          <Chip
+            label={culture.name}
+            color="primary"
+            variant="outlined"
+            sx={{ mb: 2, fontSize: '1rem', fontWeight: 'bold' }}
+          />
+
+          <Grid container spacing={2}>
+            {culture.data.map((item, idx) => (
+              <Grid item xs={12} sm={6} md={4} key={idx}>
+                <Card
+                  sx={{
+                    height: '100%',
+                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    '&:hover': { transform: 'scale(1.03)', boxShadow: 6 }
+                  }}
+                >
+                  {item.image && (
+                    <CardMedia
+                      component="img"
+                      height="160"
+                      image={item.image}
+                      alt={item.name}
+                      sx={{ objectFit: 'cover' }}
+                    />
+                  )}
+                  <CardContent>
+                    <Typography variant="subtitle1" fontWeight="medium" gutterBottom>
+                      {item.name}
+                    </Typography>
+                    {item.ytUrl && (
+                      <Tooltip title="Tonton di YouTube">
+                        <Link
+                          href={item.ytUrl}
+                          target="_blank"
+                          rel="noopener"
+                          underline="hover"
+                          sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
+                        >
+                          <YouTubeIcon color="error" fontSize="small" /> Tonton di YouTube
+                        </Link>
+                      </Tooltip>
+                    )}
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+        </Box>
+      ))}
     </Box>
   );
 };
