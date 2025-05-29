@@ -8,6 +8,21 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from "@mui/
 import BottomSheet from "./BottomSheet";
 import { Box, Typography } from "@mui/material";
 
+const getProvinceColor = (provinceName) => {
+    const colors = {
+        "Aceh": "#e6194b",
+        "Sumatera Utara": "#3cb44b",
+        "Sumatera Barat": "#ffe119",
+        "Riau": "#4363d8",
+        "Jawa Barat": "#008000",
+        "Jawa Tengah": "#911eb4",
+        "Jawa Timur": "#46f0f0",
+        "Bali": "#f032e6",
+        // Tambahkan semua provinsi sesuai kebutuhan
+    };
+    return colors[provinceName] || "#cccccc"; // Default jika tidak ditemukan
+};
+
 export default function MapComponent({ scrollToSection, openDrawer, onEachProvince }) {
     return (
         <Box sx={{ flex: 1, height: `calc(100vh - 56px)`, overflow: "hidden", backgroundColor: "lightgray" }}>
@@ -24,7 +39,12 @@ export default function MapComponent({ scrollToSection, openDrawer, onEachProvin
                 <GeoJSON 
                     data={indonesiaGeoJSON} 
                     onEachFeature={onEachProvince} 
-                    style={{ fillColor: "blue", fillOpacity: 0.5, color: "white", weight: 1 }} 
+                    style={(feature) => ({
+                        fillColor: getProvinceColor(feature.properties.PROVINSI), // sesuaikan dengan field di GeoJSON
+                        fillOpacity: 0.5,
+                        color: "white",
+                        weight: 1,
+                    })}
                 />
             </MapContainer>
 

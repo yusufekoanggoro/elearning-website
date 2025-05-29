@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Box, Typography, Card, CardMedia, CardContent, Grid, Button, Chip, Divider, Link, Tooltip
 } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import MusicContext from '../MusicContext';
+import Snackbar from '@mui/material/Snackbar';
 
 const provincesData = {
   "32": {
@@ -127,6 +128,34 @@ const ProvinceDetail = () => {
   const navigate = useNavigate();
   const province = provincesData[id];
 
+  const { setCurrentRegion, playMusic, pauseMusic } = useContext(MusicContext);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState('');
+
+  useEffect(() => {
+    setCurrentRegion(province.name); // Akan otomatis play saat masuk
+    setIsPlaying(true);
+
+    return () => {
+      pauseMusic(); // Hentikan musik saat keluar
+      setIsPlaying(false);
+    };
+  }, []);
+
+  const handleTogglePlay = () => {
+    if (isPlaying) {
+      pauseMusic();
+      setSnackbarMsg('Musik dijeda');
+    } else {
+      playMusic();
+      setSnackbarMsg('Musik diputar');
+    }
+    setSnackbarOpen(true);
+    setIsPlaying(!isPlaying);
+  };
+
+
   if (!province) {
     return (
       <Box sx={{ textAlign: 'center', mt: 5 }}>
@@ -148,6 +177,31 @@ const ProvinceDetail = () => {
       >
         Kembali
       </Button> */}
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        message={snackbarMsg}
+        onClose={() => setSnackbarOpen(false)}
+      />
+
+<Box
+  sx={{
+    position: 'fixed',
+    top: 35,
+    right: 16,
+    zIndex: 1300, // pastikan muncul di atas konten
+  }}
+>
+  <Button
+    variant="contained"
+    color={isPlaying ? 'warning' : 'primary'}
+    onClick={handleTogglePlay}
+    sx={{ boxShadow: 4 }}
+  >
+    {isPlaying ? 'Pause Musik' : 'Putar Musik'}
+  </Button>
+</Box>
 
       <Card sx={{ mb: 3, p: 2, boxShadow: 3 }}>
         <CardMedia

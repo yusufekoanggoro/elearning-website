@@ -3,32 +3,20 @@ import { Container, Box, AppBar, Toolbar, Typography } from "@mui/material";
 import FixedBottomNavigation from "./components/FixedBottomNavigation";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import backgroundMusic from "./assets/background-music.mp3";
+import { MusicProvider } from "./MusicProvider";
 
 import './App.css';
 
-function App() {
+function AppLayout() {
   const location = useLocation();
   const isIndex = location.pathname === '/';
-
-  const [playMusic, setPlayMusic] = useState(false);
-  const audioRef = useRef(null);
-
-  useEffect(() => {
-    if (playMusic && audioRef.current) {
-      audioRef.current.play().catch(err => {
-        console.log("Audio play error:", err);
-      });
-    } else if (audioRef.current) {
-      audioRef.current.pause();
-    }
-  }, [playMusic]);
 
   return (
     <Container
       disableGutters 
       maxWidth="xs" 
       // sx={{ width: "100%", margin: "0 auto"}}
-            sx={{
+      sx={{
         width: "100%",
         margin: "0 auto",
         display: {
@@ -38,8 +26,6 @@ function App() {
       }}
     >
       <>
-        {playMusic && <audio src={backgroundMusic} ref={audioRef} loop />}
-
         {
           isIndex 
             ? null
@@ -51,7 +37,7 @@ function App() {
         }
 
         <Box>
-          <Outlet context={{ setPlayMusic }} />
+          <Outlet />
         </Box>
 
         {
@@ -59,11 +45,17 @@ function App() {
             ? null
             : <FixedBottomNavigation/> 
         }
-         
       </>
-
     </Container>
   )
+}
+
+function App() {
+  return (
+    <MusicProvider>
+      <AppLayout />
+    </MusicProvider>
+  );
 }
 
 export default App

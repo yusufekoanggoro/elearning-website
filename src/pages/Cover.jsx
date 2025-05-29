@@ -14,10 +14,10 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 
 export default function Cover() {
     const navigate = useNavigate();
-    const { setPlayMusic } = useOutletContext();
+    // const { setPlayMusic } = useOutletContext();
 
     const handleMasuk = () => {
-        setPlayMusic(true);
+        // setPlayMusic(true);
         navigate('/home');
     };
 
