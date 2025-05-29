@@ -11,6 +11,7 @@ import Materi from './pages/Materi.jsx'
 import Quiz from './pages/Quiz.jsx'
 import ProvinceDetail from './pages/ProvinceDetail.jsx'
 import Cover from './pages/Cover.jsx'
+import { MusicProvider } from "./MusicProvider";
 
 const router = createBrowserRouter([
   {
@@ -21,9 +22,20 @@ const router = createBrowserRouter([
       { path: "home", element: <Home /> },
       { path: "materi", element: <Materi /> },
       { path: "quiz", element: <Quiz /> },
-      { path: "materi/detail/:id", element: <ProvinceDetail /> }
     ]
   },
+  {
+    path: "/materi/detail/:id",
+    element: (
+      <App />
+    ),
+    children: [
+      {
+        path: "",
+        element: <MusicProvider><ProvinceDetail /></MusicProvider>,
+      }
+    ]
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

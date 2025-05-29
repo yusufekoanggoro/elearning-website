@@ -1,8 +1,7 @@
-import { useNavigate, useOutletContext  } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { Box, Container, Typography, Button, Paper } from "@mui/material";
 import { styled } from '@mui/system';
 import budayaImage from "../assets/ilustrasi-budaya.png";
-import backgroundMusic from "../assets/background-music.mp3";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(4),
@@ -17,7 +16,6 @@ export default function Cover() {
     // const { setPlayMusic } = useOutletContext();
 
     const handleMasuk = () => {
-        // setPlayMusic(true);
         navigate('/home');
     };
 

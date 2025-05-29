@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Container, Box, AppBar, Toolbar, Typography } from "@mui/material";
 import FixedBottomNavigation from "./components/FixedBottomNavigation";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import backgroundMusic from "./assets/background-music.mp3";
-import { MusicProvider } from "./MusicProvider";
 
 import './App.css';
 
@@ -52,9 +50,9 @@ function AppLayout() {
 
 function App() {
   return (
-    <MusicProvider>
+    // <MusicProvider>
       <AppLayout />
-    </MusicProvider>
+    // </MusicProvider>
   );
 }
 

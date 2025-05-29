@@ -62,7 +62,8 @@ const provincesData = {
         data: [
           {
             name: "Jaipong",
-            image: "https://blog-static.mamikos.com/wp-content/uploads/2023/12/Nama-Tarian-Tradisional-Jawa-Barat-beserta-Gambar-1.jpg.webp"
+            image: "https://i.ytimg.com/vi/HVFnKlE42-I/maxresdefault.jpg",
+            ytUrl: "https://www.youtube.com/watch?v=yz5p3f2jKLU"
           }
         ]
       },
@@ -95,6 +96,19 @@ const provincesData = {
             name: "Calung",
             image: "https://upload.wikimedia.org/wikipedia/id/thumb/5/5d/Calung-sunda.jpg/500px-Calung-sunda.jpg"
           }
+        ]
+      },
+      {
+        name: "Penggunaan Alat Musik",
+        data: [
+          {
+            name: "Angklung",
+            ytUrl: "https://www.youtube.com/watch?v=yz5p3f2jKLU"
+          },
+          {
+            name: "Calung",
+            ytUrl: "https://www.youtube.com/watch?v=yz5p3f2jKLU"
+          },
         ]
       },
       {

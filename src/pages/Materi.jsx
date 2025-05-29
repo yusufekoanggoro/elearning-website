@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import { Box, Typography } from "@mui/material";
 import MapComponent from "../components/MapComponent";
 import { Link, Element, scroller } from 'react-scroll';
