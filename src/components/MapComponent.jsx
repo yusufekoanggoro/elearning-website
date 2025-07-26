@@ -10,13 +10,11 @@ import { Box, Typography } from "@mui/material";
 
 const getProvinceColor = (provinceName) => {
     const colors = {
-        "Aceh": "#e6194b",
+        "DKI Jakarta": "#46f0f0",
         "Sumatera Utara": "#3cb44b",
         "Sumatera Barat": "#ffe119",
         "Riau": "#4363d8",
         "Jawa Barat": "#008000",
-        "Jawa Tengah": "#911eb4",
-        "Jawa Timur": "#46f0f0",
         "Bali": "#f032e6",
         // Tambahkan semua provinsi sesuai kebutuhan
     };
