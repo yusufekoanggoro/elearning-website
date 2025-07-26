@@ -11,11 +11,8 @@ import { Box, Typography } from "@mui/material";
 const getProvinceColor = (provinceName) => {
     const colors = {
         "DKI Jakarta": "#46f0f0",
-        "Sumatera Utara": "#3cb44b",
-        "Sumatera Barat": "#ffe119",
-        "Riau": "#4363d8",
         "Jawa Barat": "#008000",
-        "Bali": "#f032e6",
+        "Banten": "#f032e6",
         // Tambahkan semua provinsi sesuai kebutuhan
     };
     return colors[provinceName] || "#cccccc"; // Default jika tidak ditemukan

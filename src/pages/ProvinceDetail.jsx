@@ -241,6 +241,97 @@ const provincesData = {
         ]
       }
     ]
+  },
+  "36": {
+    name: "Banten",
+    capital: "Serang",
+    area: 9662, // dalam km²
+    population: 12240000,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Coat_of_arms_of_Banten.svg/375px-Coat_of_arms_of_Banten.svg.png",
+    cultures: [
+      {
+        name: "Rumah Adat",
+        data: [
+          {
+            name: "Rumah Sulah Nyanda",
+            image: "https://asset.kompas.com/crops/-Q5d_5nPmZcUPuwJgTs4KoK6RVU=/199x45:905x516/1200x800/data/photo/2023/04/28/644bb571da857.png"
+          },
+        ]
+      },
+      {
+        name: "Baju Adat",
+        data: [
+          {
+            name: "Pakaian Adat Banten untuk Pengantin",
+            image: "https://sdn13.bimakota.sch.id/upload/kontent/1714461053_bbf0c8f552dd8349e89b.png"
+          }
+        ]
+      },
+      {
+        name: "Tarian",
+        data: [
+          {
+            name: "Tarian Cokek",
+            image: "https://cilegonhills.id/wp-content/uploads/2021/03/Berbagai-Macam-Tarian-Tradisional-di-Banten-1200px-x-675px.jpg",
+            ytUrl: "https://youtu.be/X_GeBXD21Fk"
+          }
+        ]
+      },
+      {
+        name: "Senjata",
+        data: [
+          {
+            name: "Golok Ciomas",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSI_jIa8dx7p139bc3baUHpOuz_mRH95z9Ng&s"
+          }
+        ]
+      },
+      {
+        name: "Makanan Khas",
+        data: [
+          {
+            name: " Sate Bandeng",
+            image: "https://ppid.serangkota.go.id/po-content/uploads/img-20210330-wa0039.jpg"
+          }
+        ]
+      },
+      {
+        name: "Alat Musik",
+        data: [
+          {
+            name: "Pantun bambu",
+            image: ""
+          },
+        ]
+      },
+      {
+        name: "Penggunaan Alat Musik",
+        data: [
+          {
+            name: "Pantun Bambu",
+            ytUrl: "https://youtu.be/5qPEiCHJ2QM?si=Y5MY6v4RkBuDWWvl"
+          },
+        ]
+      },
+      {
+        name: "Lagu Daerah",
+        data: [
+          {
+            name: "Dayung sampan",
+            ytUrl: "https://youtu.be/AlKPw_DL0Ao?si=g2JNsIkngQmeovdg"
+          },
+        ]
+      },
+      {
+        name: "Seni Pertunjukan",
+        data: [
+          {
+            name: "Debus Surosowan ",
+            ytUrl: "https://www.youtube.com/watch?v=rtBDG5r_LOc"
+          }
+        ]
+      }
+    ]
   }
 };
 
